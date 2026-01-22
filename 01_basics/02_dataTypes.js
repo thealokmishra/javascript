@@ -3,7 +3,7 @@
 //  alert(3+3) //can't be used in nodejs, only browser
 
 let name = "Alok"    //string
-let age = 3          //int
+let age = 3          //number
 let isLogged = false  //bool
 
 // null => standalone value
