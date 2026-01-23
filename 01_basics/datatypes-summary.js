@@ -1,6 +1,6 @@
 // js is a dynamically typed language means var types are defined at runtime & we don't need to explicitly declare the type of var like if it's Number, string or bool.
 
-//  Primitive - you get a copy
+//  Primitive - you get a copy, stored as values
 
 //  7 types : String, Number, Boolearn, null, undefined, Symbol, BigInt
 
@@ -21,7 +21,7 @@ console.log(id === anotherId);
 
 
 
-// Reference type (Non primitive) - you get a reference
+// Reference type (Non primitive) - stored as reference
 
 // Array, Objects, Functions
 
