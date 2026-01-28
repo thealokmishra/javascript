@@ -1,7 +1,6 @@
 // singleton: constructor method
 // Object.create
 
-
 // object literals
 // js objects are key: value pairs where keys are strings or symbols
 // A Symbol is a primitive type used as a unique object key to avoid naming collisions.
@@ -9,40 +8,40 @@
 
 // the keys are string but need not be wrapped in quotes
 
-const mySym = Symbol("key1") //declaring a symbol: every symbol is unique
-
+const mySym = Symbol("key1"); //declaring a symbol: every symbol is unique
 
 const JsUser = {
-    name: "Alok",
-    "full name": "Alok Mishra",
-    [mySym]: "mykey1", // while using symbol as key you must wrap it in sq brackets: [sym]: 123
-    age: 18,
-    location: "Jaipur",
-    email: "alok@gmail.com",
-    isLoggedIn: false,
-    lastLoginDays: ["Monday", "Saturday"]
-}
+  name: "Alok",
+  "full name": "Alok Mishra",
+  [mySym]: "mykey1", // while using symbol as key you must wrap it in sq brackets: [sym]: 123
+  age: 18,
+  location: "Jaipur",
+  email: "alok@gmail.com",
+  isLoggedIn: false,
+  lastLoginDays: ["Monday", "Saturday"],
+};
 
 // accessing object's data using key
 // console.log(JsUser.email)
 
-// te below method is necessary in case the key inside object is wrapped in quotes: "key", the .key method won't work in this case
+// the below method is necessary in case the key inside object is wrapped in quotes: "key", the .key method won't work in this case
 // console.log(JsUser["email"])  //can be accessed by putting key as string in sq brackets
 // console.log(JsUser["full name"])
-// console.log(JsUser[mySym])  sym as key need not be put in quotes
+// console.log(JsUser[mySym])  //sym as key need not be put in quotes-can only be accessed by key in sq brackets
 
-JsUser.email = "hitesh@chatgpt.com"  //changing value
-// Object.freeze(JsUser)
-JsUser.email = "hitesh@microsoft.com"
+JsUser.email = "hitesh@chatgpt.com"; //changing value
+// Object.freeze(JsUser) - freezing object doesn't allow any changes
+JsUser.email = "hitesh@microsoft.com"; //can't be changed
 // console.log(JsUser);
 
-JsUser.greeting = function(){
-    console.log("Hello JS user");
-}
-JsUser.greetingTwo = function(){
-    console.log(`Hello JS user, ${this.name}`);
-}
+//declaring methods inside objects
+JsUser.greeting = function () {
+  console.log("Hello JS user");
+};
+JsUser.greetingTwo = function () {
+  console.log(`Hello JS user, ${this.name}`); //this keyword points to current object to access its properties
+};
 
 // console.log(JsUser.greeting());
 // console.log(JsUser.greetingTwo());
-JsUser.greetingTwo()
+JsUser.greetingTwo();
