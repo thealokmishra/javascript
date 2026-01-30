@@ -8,7 +8,9 @@
 
 ((name) => {
   console.log(`DB CONNECTED TWO ${name}`);
-})("hitesh")((params) => {
+})("hitesh");
+
+((params) => {
   console.log(`DB CONNECTED TWO ${params}`);
 })("argument");
 
