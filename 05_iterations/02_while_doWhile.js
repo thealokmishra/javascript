@@ -16,6 +16,9 @@ while (arr < myArray.length) {
 let score = 11;
 
 do {
-  console.log(`Score is ${score}`);
+  console.log(`Score is ${score}`); //out: Score is 11,
   score++;
 } while (score <= 10);
+
+// do while loop executes the code block once before checking the condition, but while loop executes the code block after checking the condition
+// that's why above we got output: 11, even when condition is false i.e. score > 10
