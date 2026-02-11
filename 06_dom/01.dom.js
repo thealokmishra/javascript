@@ -49,3 +49,21 @@ document.querySelectorAll("li")[0].style.color = "green";
 const liList = document.querySelectorAll("li"); //can also be stored it in a variable
 
 document.querySelectorAll("li").style.color = "green"; //this will not work, because it'll return a nodelist and dont know where to apply the style
+
+// using forEach to apply style to all the elementsof returned nodelist
+liList.forEach((li) => {
+  li.style.color = "green";
+});
+
+//below method returns htmlcollection instead of nodelist, we can access elements by index
+document.getElementsByClassName("list-item")[0]; //accessing element at 0th index of class list-item, any element with class list-item will be selected and returned as htmlcollection
+
+//storing returned  htmlcollection in a variable
+const listItems = document.getElementsByClassName("list-item");
+
+//convert htmlcollection to array because normal array and nodelist methodsare not applicable
+Array.from(listItems).forEach((li) => {
+  li.style.color = "orange";
+  li.style.fontSize = "20px";
+  li.innerText = "Hello, Alok";
+});
