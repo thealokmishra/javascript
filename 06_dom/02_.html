@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <div class="parent">
+      <!-- this is a comment -->
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+    </div>
+  </body>
+  <script>
+    const parent = document.querySelector(".parent");
+    // console.log(parent);
+    // console.log(parent.children);                // .children returns an HTMLCollection of the child elements of the parent element. It does not include text nodes, comment nodes, or any other non-element nodes. The HTMLCollection is a live collection, meaning that it updates automatically when the DOM changes.
+    // console.log(parent.children[1].innerHTML);  //can be accessed using an index
+
+    // for (let i = 0; i < parent.children.length; i++) {    // we can loop through the children using a for loop and access each child element using its index. In this example
+    //      console.log(parent.children[i].innerHTML);
+    // }
+
+    parent.children[1].style.color = "orange";
+    // console.log(parent.firstElementChild);  // returns the first child element of the parent element.
+    // console.log(parent.lastElementChild);   // returns the last child element of the parent element.
+
+    const dayOne = document.querySelector(".day");
+    // console.log(dayOne);
+    // console.log(dayOne.parentElement);           // returns the parent element of the selected element. In this case, it will return the <div class="parent"> element that contains the .day elements.
+    // console.log(dayOne.previousElementSibling);  // returns the previous sibling element of the selected element. If there is no previous sibling element, it will return null. In this case, since the .day elements are the first children of their parent, there is no previous sibling element, so it will return null.
+    // console.log(dayOne.nextElementSibling);      // returns the next sibling element of the selected element. If there is no next sibling element, it will return null. In this case, it will return the second .day element (Tuesday) as the next sibling of the first .day element (Monday).
+
+    console.log("NODES: ", parent.childNodes); // .childNodes returns a NodeList of all child nodes of the parent element, including text nodes, comment nodes, and any other non-element nodes. The NodeList is a static collection, meaning that it does not update automatically when the DOM changes. In this case, it will include the text nodes (whitespace) between the .day elements, as well as any comment nodes or other non-element nodes that may be present in the parent element.
+
+    //we don't use querySelector each time because it is a bit expensive in terms of performance. It searches the entire DOM tree to find the first element that matches the specified selector, which can be time-consuming, especially if the DOM tree is large. By storing a reference to the selected element in a variable (like dayOne), we can access it directly without having to search the DOM again, which can improve performance and make our code more efficient.
+  </script>
+</html>
