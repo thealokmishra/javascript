@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <ul class="language">
+      <li>Javascript</li>
+    </ul>
+  </body>
+  <script>
+    //fn to add new li element to the ul with class ".language"
+    function addLanguage(langName) {
+      const li = document.createElement("li");
+      li.innerHTML = `${langName}`; //set the innerHTML of the li element to the value of langName, which is passed as an argument to the function. This will display the name of the language inside the li element on the webpage.
+      document.querySelector(".language").appendChild(li); //append the newly created li element as a child of the ul element with the class "language". This will add the new language to the list on the webpage.
+    }
+    addLanguage("python"); //call the addLanguage function with the argument "python" to add "python" as a new language to the list on the webpage.
+    addLanguage("typescript");
+
+    //optimized version of the above function
+    function addOptiLanguage(langName) {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(langName)); // create a text node with the value of langName and append it to the li element. This is a more efficient way to set the text content of the li element compared to using innerHTML,
+      document.querySelector(".language").appendChild(li);
+    }
+    addOptiLanguage("golang");
+
+    //Editing values
+    // pseudo class selector e.g: :first-child, :last-child, :nth-child(n)
+    //unlike normal class or id selectors, pseudo class selectors are used to select elements based on their position or state in the DOM. For example, :first-child selects the first child element of a parent, :last-child selects the last child element, and :nth-child(n) selects the nth child element of a parent. These selectors can be used to target specific elements in the DOM without needing to assign them unique classes or ids.
+    const secondLang = document.querySelector("li:nth-child(2)");
+    console.log(secondLang);
+    //secondLang.innerHTML = "Mojo"
+
+    const newli = document.createElement("li");
+    newli.textContent = "Mojo";
+    secondLang.replaceWith(newli); //replaceWith method is used to replace the secondLang element (which is the second li element in the list) with the newli element (which contains the text "Mojo"). This will update the list on the webpage to show "Mojo" instead of "typescript" as the second language in the list.
+
+    //edit
+    const firstLang = document.querySelector("li:first-child");
+    firstLang.outerHTML = "<li>TypeScript</li>"; //outerHTML is a property that allows you to get or set the entire HTML content of an element, including the element itself. In this case, we are setting the outerHTML of the firstLang element (which is the first li element in the list) to a new string of HTML that contains a new li element with the text "TypeScript". This will replace the entire first li element with the new one, effectively changing "Javascript" to "TypeScript" in the list on the webpage.
+
+    //remove
+    const lastLang = document.querySelector("li:last-child");
+    lastLang.remove(); //remove method is used to remove the lastLang element (which is the last li element in the list) from the DOM. This will remove "golang" from the list on the webpage, leaving only "TypeScript" and "Mojo" as the remaining languages in the list.
+  </script>
+</html>
