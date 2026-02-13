@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html Events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // document.getElementById('owl').onclick = function(){   //onClick is old approach use addEventListener where you can attach multiple events to the same element
+    //     alert("owl clicked")
+    // }
+
+    //study event object properties:-
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    document.getElementById("images").addEventListener(
+      "click",
+      (e) => {
+        console.log("clicked inside the ul");
+      },
+      false,
+    ); //false is for event bubbling and true is for event capturing, by default it is false and we don't need to write it, but if we want to use event capturing then we can write true here.
+
+    //bubbling is when the event is triggered on the target element and then it bubbles up to the parent elements, while capturing is when the event is triggered on the parent elements and then it captures down to the target element.
+    // ex: suppose we have a div inside a div and we click on the innermost div, then the event will first trigger on the innermost div and then it will bubble up to the parent divs, while in capturing it will first trigger on the outermost div and then it will capture down to the innermost div.
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation()       //prevent bubbling and capturing both can be stopped by using stopPropagation() method, it will stop the event from bubbling up or capturing down to the parent elements.
+    // }, false)
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();             //preventDefault() method is used to prevent the default action of the event, in this case it will prevent the default action of the anchor tag which is to navigate to the href link.
+    //     e.stopPropagation()
+    //     console.log("google clicked");
+    // }, false)
+
+    document.querySelector("#images").addEventListener("click", function (e) {
+      console.log(e.target.tagName); //tagName property is used to get the tag name of the element which is clicked, in this case it will return IMG for all the images and A for the anchor tag.
+      if (e.target.tagName === "IMG") {
+        console.log(e.target.id); //id property is used to get the id of the element which is clicked, in this case it will return the id of the image which is clicked.
+        let removeIt = e.target.parentNode; //parentNode property is used to get the parent element of the element which is clicked, in this case it will return the li element which is the parent of the image.
+        removeIt.remove(); //remove() method is used to remove the element from the DOM, in this case it will remove the li element which is the parent of the image which is clicked.
+      }
+    });
+
+    //removeIt.parentNode.removeChild(removeIt) //another way to remove the element from the DOM
+  </script>
+</html>
