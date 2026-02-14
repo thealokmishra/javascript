@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hi, How are you!</h1>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    const sayAlok = function () {
+      console.log("Alok");
+    };
+
+    const sayAlokInterval = setTimeout(sayAlok, 1000); //we can also pass another function as an argument to setTimeout, which will be executed after the specified time has passed. In this case, the sayAlok function will be executed after 1 second (1000 milliseconds).
+
+    const changeText = function () {
+      document.querySelector("h1").innerHTML = "Text changed after 2 seconds";
+    };
+
+    // setTimeout takes a callback function and a time in milliseconds as arguments. It executes the callback function after the specified time has passed.
+    const changeMe = setTimeout(changeText, 2000); //the number is in milliseconds, so 2000 means 2 seconds
+
+    document.querySelector("#stop").addEventListener("click", function () {
+      clearTimeout(changeMe); //clearTimeout is used to stop the execution of the callback function that was scheduled with setTimeout. It takes the identifier returned by setTimeout as an argument.
+      console.log("STOPPED");
+    });
+  </script>
+</html>
