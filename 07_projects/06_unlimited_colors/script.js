@@ -21,5 +21,5 @@ document.querySelector("#stop").addEventListener("click", () => {
   // Clear the interval using the shared variable
   clearInterval(intervalId);
 
-  intervalId = null;
+  intervalId = null; //because if we don't set intervalId to null, then when we click start button again, it won't work because the condition !intervalId will be false since intervalId still holds the previous interval ID, so by setting it to null we ensure that the condition will be true and the new interval will be created when we click start button again.
 });
