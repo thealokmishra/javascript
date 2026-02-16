@@ -23,10 +23,16 @@ function User(username, loginCount, isLoggedIn) {
 
   this.greeting = function () {};
 
-  return this;
+  return this; //this is returned implicitly, dont need to return it, just for clarification
 }
 
-const userOne = new User("hitesh", 12, true);
-const userTwo = new User("ChaiAurCode", 11, false);
-console.log(userOne.constructor);
+const userOne = User("hitesh", 12, true);
+console.log(userOne);
+const userTwo = User("ChaiAurCode", 11, false);
+console.log(userOne); //even if we are using two differnt variables, when we create another user, it will overwrite the properties of the first user because we are not creating a new object for each user, we are just modifying the same object and returning it, that's why we get the same user details for both userOne and userTwo, which is the details of the last user created.
+// to avoid this we can use the 'new' keyword which creates a new object for each user and sets the context of 'this' to that new object, so that we can have different user details for each user.
+
+userOne = new User("hitesh", 12, true);
+userTwo = new User("ChaiAurCode", 11, false);
+// console.log(userOne.constructor);
 //console.log(userTwo);
