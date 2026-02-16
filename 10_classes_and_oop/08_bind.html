@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <button>Button Clicked</button>
+  </body>
+  <script>
+    class React {
+      constructor() {
+        this.library = "React";
+        this.server = "https://localhost:300";
+
+        //requirement
+        document
+          .querySelector("button")
+          .addEventListener("click", this.handleClick.bind(this));
+      }
+      handleClick() {
+        console.log("button clicked");
+        console.log(this.server);
+      }
+    }
+
+    const app = new React();
+    // ******************IMORTANT******************
+    // In JavaScript, the value of '.this' is usually determined by how the function is called, not where it was defined.
+    // Even though 'handleClick' is written inside your React class, the moment you pass it into addEventListener, it gets "detached" from your class instance. and .this becomes button click event target, which is the button element itself.
+    // here the Button is calling it so .this is the button element, and Button doesn't have a property: 'server' so 'this.server' returns 'undefined'
+    // so we do 'this.handleClick.bind(this)' to bind the handleClick method to the current instance of the React class, ensuring that when handleClick is called, .this inside it will refer to the React instance, allowing us to access properties like 'server'.
+    // in modern React we would use arrow functions to avoid this issue, as arrow functions do not have their own .this and instead inherit it from the surrounding context, which is the React class instance in this case.
+  </script>
+</html>
