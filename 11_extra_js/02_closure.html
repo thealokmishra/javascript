@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure aur chai</title>
+  </head>
+  <body style="background-color: #313131">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+  </body>
+
+  <script>
+    // document.getElementById("orange").onclick = function(){
+    //     document.body.style.backgroundColor = `orange`
+    // }
+    // document.getElementById("green").onclick = function(){
+    //     document.body.style.backgroundColor = `green`
+    // }
+
+    //*******(IMPORTANT) use case of closure********
+    function clickHandler(color) {
+      // document.body.style.backgroundColor = `${color}`  //this will not work we have to create a function and return it
+
+      return function () {
+        document.body.style.backgroundColor = `${color}`;
+      };
+    }
+    //NOTE: learn more about why function is directly called without click event and why we have to return a function in this case
+    // if we don't return a function then even without clicking the button the background color will change to the last color because the function will be executed immediately and the value of color will be the last one in the loop which is "green" in this case. By returning a function, we create a closure that retains access to the color variable even after the outer function has finished executing.
+    document.getElementById("orange").onclick = clickHandler("orange");
+    document.getElementById("green").onclick = clickHandler("green");
+  </script>
+</html>
