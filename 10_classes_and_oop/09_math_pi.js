@@ -22,8 +22,11 @@ const chai = {
   },
 };
 
+// .getOwnPropertyDescriptor() takes first argument as the object and second argument as the property name and returns an object that describes the attributes of that property. It includes value, writable, enumerable, and configurable attributes.
 console.log(Object.getOwnPropertyDescriptor(chai, "name"));
 
+// By default, properties added to an object are writable, enumerable, and configurable. This means you can change their value, they will show up in loops, and you can modify their attributes later on.
+// You can change the value of a property by using Object.defineProperty
 Object.defineProperty(chai, "name", {
   //writable: false,
   enumerable: true,
@@ -31,6 +34,7 @@ Object.defineProperty(chai, "name", {
 
 console.log(Object.getOwnPropertyDescriptor(chai, "name"));
 
+// we have to use Object.entries because the name property is not enumerable by default, so it won't show up in a for...in loop. Object.entries() returns an array of a given object's own enumerable string-keyed property [key, value] pairs, which allows us to iterate over them easily.
 for (let [key, value] of Object.entries(chai)) {
   if (typeof value !== "function") {
     console.log(`${key} : ${value}`);
